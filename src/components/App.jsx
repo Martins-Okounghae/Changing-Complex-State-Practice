@@ -11,7 +11,23 @@ function App() {
     const {value, name} = event.target
     setContact(prevValue =>{
       if (name ==="fName"){
-        
+        return {
+          fName:value,
+          lName:prevValue.lName,
+          email:prevValue.email
+        }
+      }else if(name === "lName"){
+        return{
+          fName:prevValue.fName,
+          lName:value,
+          email:prevValue.email
+        }
+      }else if (name === "email"){
+        return{
+          fName:prevValue.fName,
+          lName:prevValue.lName,
+          email:value
+        }
       }
     })
   }
@@ -26,21 +42,21 @@ function App() {
         <input 
         name="fName" 
         placeholder="First Name"
-        onChange ={}
-        value = {} />
+        onChange ={handleChange}
+        value = {contact.fName} />
 
 
         <input name="lName"
          placeholder="Last Name"
-         onChange ={}
-         value ={}
+         onChange ={handleChange}
+         value ={contact.lName}
           />
 
 
         <input name="email" 
         placeholder="Email"
-        onChange = {}
-        value ={} />
+        onChange = {handleChange}
+        value ={contact.email} />
 
         <button>Submit</button>
       </form>
